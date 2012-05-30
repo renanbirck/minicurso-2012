@@ -6,6 +6,8 @@
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{mdwlist}
+\usepackage{textcomp}
+\usepackage{graphicx}
 \usetheme{Antibes}
 
 
@@ -52,6 +54,35 @@
 \end{frame} % slide SPICE
 
 \begin{frame}
+Vantagens:
+\begin{itemize}
+\item{Projeto} mais rápido, podem-se testar diversos componentes antes da compra.
+\item{Medidas} que muitas vezes são difíceis de fazer na bancada.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+Desvantagens:
+\begin{itemize}
+\item{\textbf{Não substitui prototipagem:} os modelos dos componentes são idealizados, não levam efeitos térmicos ou as componentes parasitas da placa}
+\item{\textbf{Necessidade} de modelos para os componentes}
+
+\item{Em geral: \textbf{lixo entra, lixo sai}. Os resultados das simulações são tão bons quanto os modelos e o projeto do circuito forem.}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+
+\begin{figure}[htb]
+\includegraphics[width=200px]{images/tirinha32}
+\caption{Lixo entra, lixo sai!}
+\label{fig:lixoentrasai}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
 \frametitle{Desenhando um circuito}
 \end{frame}
 
@@ -78,7 +109,7 @@
 \frametitle{Análise AC}
 \begin{itemize}
 \item{Análise de pequenos sinais, no domínio da frequência}
-\item{Circuitos não-lineares são \textbf{linearizados} no ponto de operação}
+\item{Circuitos não-lineares são \textbf{linearizados} ao redor do ponto de operação}
 
 \item{As fontes são definidas como fasores com módulo e fase}
 \item{Por exemplo: Fonte definida como $AC 1 0$ = $1\measuredangle 0$} 
@@ -101,12 +132,20 @@
 \frametitle{Análise de Fourier}
 \begin{itemize}
 \item Permite visualizar o conteúdo harmônico de um sinal, isto é, as frequências que formam esse sinal.
+\item \textbf{Sempre} especificar o parâmetro \textit{plotwinsize=0}, para desativar a compactação (que pode resultar na perda de componentes do sinal).
 \end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Exemplo 4: Modulador AM}
 \end{frame}
+
+\begin{frame}
+\frametitle{Resultados}
+Da teoria de Fourier, que ao multiplicarmos um sinal de frequência $F_s$ por uma portadora de frequência $F_c$, obtemos as harmônicas $F_s + F_c$ e $F_s - F_c$. E isso fica visível no gráfico!
+
+\end{frame}
+
 
 \begin{frame}
 \frametitle{Medição de THD com Fourier}
