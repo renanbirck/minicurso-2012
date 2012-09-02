@@ -32,6 +32,8 @@
 \item{Reduzir custos de prototipagem}
 \pause
 \item{Simplificar o processo de projeto}
+\pause
+\item{entre outros.}
 \end{itemize}
 \end{itemize}
 \end{frame} % slide introdução
@@ -39,16 +41,15 @@
 \begin{frame} % slide SPICE
 \frametitle{SPICE}
 \begin{itemize}
-\item{\textbf{S}imulation \textbf{P}rogram \textbf{W}ith \textbf{I}ntegrated \textbf{C}ircuit \textbf{E}mphasis}
-\item{\textbf{Primeiras versões}: anos 70, grandes computadores, modo texto}
-\item{\textbf{SPICE 2}: anos 80/90, computadores de médio porte, interface gráfica}
-\item{\textbf{Versões atuais}: computadores pessoais}
+\item{\textbf{S}imulation \textbf{P}rogram \textbf{W}ith \textbf{I}ntegrated \textbf{C}ircuit \textbf{E}mphasis - Ferramenta de Simulação com Ênfase em Circuitos Integrados}
+\item{\textbf{Primeiras versões}: FORTRAN, anos 70, grandes computadores, modo texto}
+\item{\textbf{SPICE 2}: linguagem C, anos 80/90, computadores de pequeno/médio porte, interface gráfica simples}
+\item{\textbf{Versões atuais}: C/C++, computadores pessoais, interface gráfica avançada, desenho de circuitos}
 \pause
 \item{\textbf{Vários fabricantes} pegaram o código e fizeram suas próprias versões adicionando recursos}
 \begin{itemize}
 \item{\textbf{Motivação}: atender interesses específicos de indústrias: microeletrônica, RF etc...}
-\item{Assim, temos hoje diversos simuladores: PSpice, HSpice, LTspice, Proteus entre outros}
-
+\item{Assim, temos hoje diversos simuladores: PSpice, HSpice, LTspice, Spectre, Proteus entre outros}
 \end{itemize}
 \end{itemize}
 \end{frame} % slide SPICE
@@ -56,8 +57,9 @@
 \begin{frame}
 Vantagens:
 \begin{itemize}
-\item{Projeto} mais rápido, podem-se testar diversos componentes antes da compra.
-\item{Medidas} que muitas vezes são difíceis de fazer na bancada.
+\item{\textbf{Projeto}} mais rápido, podem-se testar diversos componentes antes da compra.
+\item{Realizar \textbf{medidas}} que muitas vezes são difíceis de fazer na bancada.
+\item{\textbf{Projeto iterativo}}, usando métodos de otimização para atender requisitos.
 \end{itemize}
 
 \end{frame}
@@ -65,8 +67,10 @@ Vantagens:
 \begin{frame}
 Desvantagens:
 \begin{itemize}
-\item{\textbf{Não substitui prototipagem:} os modelos dos componentes são idealizados, não levam efeitos térmicos ou as componentes parasitas da placa}
+\item{\textbf{Não substitui prototipagem:} os modelos são aproximados, não levam efeitos térmicos ou as componentes parasitas da placa}
 \item{\textbf{Necessidade} de modelos para os componentes}
+\item{O simulador deverá \textbf{suportar} as tecnologias usadas}
+
 
 \item{Em geral: \textbf{lixo entra, lixo sai}. Os resultados das simulações são tão bons quanto os modelos e o projeto do circuito forem.}
 \end{itemize}
@@ -75,11 +79,19 @@ Desvantagens:
 \begin{frame}
 
 \begin{figure}[htb]
-\includegraphics[width=200px]{images/tirinha33}
-\caption{Lixo entra, lixo sai!}
+\includegraphics[width=170px]{images/tirinha33}
+\caption{O simulador é uma "máquina ignorante" que só faz o que ele é mandado. Pena que ele não faz café}
 \label{fig:lixoentrasai}
 \end{figure}
 
+\end{frame}
+
+\begin{frame}
+\frametitle{Obtendo e instalando o LTspice}
+\begin{itemize}
+\item \url{http://www.linear.com/ltspice} $\rightarrow$ \textit{Download LTspice IV}
+\item Proceder com a instalação, será criado um ícone na área de trabalho.
+\end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -95,9 +107,37 @@ Desvantagens:
 \end{frame}
 
 \begin{frame}
+\frametitle{Parâmetros: resistores, capacitores e indutores}
+\begin{itemize}
+\item{Para capacitores e indutores, podemos definir \textbf{condições iniciais} de tensão e corrente, respectivamente...}
+\item{... mas elas só serão respeitadas se marcarmos \textit{Use initial Conditions} nos parâmetros de simulação}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Parâmetros: semicondutores}
+\begin{itemize}
+\item{Modelos de semicondutores contêm os parâmetros que serão usados pelas equações de dispositivos.}
+\item{Normalmente esses modelos são fornecidos pelos fabricantes.}
+\item{Componentes mais complexos (\textit{op-amps}, \textit{buffers} etc...) estão disponíveis na forma de subcircuitos.}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
 \frametitle{Análise transiente}
 \begin{itemize}
-\item{Análise no domínio do tempo, para circuitos lineares ou não}
+\item{Simulação no domínio do tempo, para circuitos lineares ou não, empregando as equações de dispositivos e as técnicas de análise de circuitos}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Análise transiente - opções de configuração}
+\begin{itemize} 
+\item \textit{Stop Time}: por quanto tempo executar a simulação
+\item \textit{Time to Start Saving Data}: quando começar a salvar dados?
+\item \textit{Start external DC supplies at 0V}: iniciar as fontes DC em 0V; após 20 $\mu$s elas subirão ao nível especificado
+\item \textit{Skip Initial Operating Point Solution}: usar as condições iniciais especificadas anteriormente (se não tiver nenhuma, ele usa 0 V), caso contrário ele tenta calcular um ponto de operação DC.
 \end{itemize}
 \end{frame}
 
@@ -106,9 +146,19 @@ Desvantagens:
 \end{frame}
 
 \begin{frame}
+\frametitle{Exemplo 2: Transformador}
+Usamos o elemento $K$ para definir um acoplamento magnético entre dois indutores.
+\end{frame}
+
+\begin{frame}
+\frametitle{Exemplo 3: Circuito a transistor}
+\end{frame}
+
+
+\begin{frame}
 \frametitle{Análise AC}
 \begin{itemize}
-\item{Análise de pequenos sinais, no domínio da frequência}
+\item{Análise de pequenos sinais no domínio da frequência}
 \item{Circuitos não-lineares são \textbf{linearizados} ao redor do ponto de operação}
 
 \item{As fontes são definidas como fasores com módulo e fase}
@@ -117,7 +167,7 @@ Desvantagens:
 \end{frame}
 
 \begin{frame}
-\frametitle{Exemplo 2: Circuito com amplificador operacional}
+\frametitle{Exemplo 4: Circuito com amplificador operacional}
 \end{frame}
 
 \begin{frame}
@@ -125,7 +175,7 @@ Desvantagens:
 \end{frame}
 
 \begin{frame}
-\frametitle{Exemplo 3: Amplificador \textit{common source}}
+\frametitle{Exemplo 5: Curvas do diodo}
 \end{frame}
 
 \begin{frame}
@@ -137,21 +187,27 @@ Desvantagens:
 \end{frame}
 
 \begin{frame}
-\frametitle{Exemplo 4: Modulador AM a transistor}
+\frametitle{Exemplo 6: Modulador AM a transistor}
 \end{frame}
 
 \begin{frame}
 \frametitle{Resultados}
-Da teoria de Fourier, que ao multiplicarmos um sinal de frequência $F_s$ por uma portadora de frequência $F_c$, obtemos as harmônicas $F_s + F_c$ e $F_s - F_c$. E isso fica visível no gráfico!
+Da teoria de Fourier, sabemos que ao multiplicarmos um sinal de frequência $F_s$ por uma portadora de frequência $F_c$ (modulação em amplitude), obtemos as harmônicas $F_s + F_c$ e $F_s - F_c$. E isso fica visível no gráfico.
 \end{frame}
-
 
 \begin{frame}
 \frametitle{Medição de THD com Fourier}
+\begin{itemize}
+\item Excita-se o circuito com um sinal senoidal naentrada, e determina-se o conteúdo harmônico da saída.
+\begin{itemize}
+\item Sintaxe: \texttt{.four freq-fundamental V(out)}
+\item Obs.: \textbf{definir uma análise transiente antes}
+\end{itemize}
+\end{itemize}
 \end{frame}
 
 \begin{frame}
-\frametitle{Exemplo 5: Amplificador \textit{push-pull}}
+\frametitle{Exemplo 7: Amplificador \textit{push-pull}}
 \end{frame}
 
 \begin{frame}
@@ -161,14 +217,15 @@ Da teoria de Fourier, que ao multiplicarmos um sinal de frequência $F_s$ por um
 \end{itemize}
 \end{frame}
 
-
 \begin{frame}
 {\LARGE OBRIGADO!}
 \end{frame}
 
 \begin{frame}
 Contatos: \url{renan.ee.ufsm@gmail.com} \url{http://facebook.com/renanbirck} \url{http://twitter.com/renan2112}\newline
+
 O código-fonte desses slides e os circuitos empregados estão disponíveis em \url{https://github.com/renanbirck/minicurso-2012} ou com o autor.
 
+Crédito das tirinhas: Vida de Programador \url{http://www.vidadeprogramador.com.br}
 \end{frame}
 \end{document}
