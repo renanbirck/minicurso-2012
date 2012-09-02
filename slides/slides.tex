@@ -100,6 +100,10 @@ Desvantagens:
 
 \begin{frame}
 \frametitle{Componentes}
+\begin{itemize}
+\item {Acessíveis pelo teclado:} Resistor (R), capacitor (C), indutor (L), diodo (D)
+\item {No menu de componentes (aperte F2)}: Fonte de tensão (\textit{Voltage}) e de corrente (\textit{Current}), transistores (\textit{npn/pnp}, \textit{njf/pjf} (FET), \textit{nmos/pmos} (MOSFET))
+\end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -158,11 +162,23 @@ Usamos o elemento $K$ para definir um acoplamento magnético entre dois indutore
 \begin{frame}
 \frametitle{Análise AC}
 \begin{itemize}
-\item{Análise de pequenos sinais no domínio da frequência}
+\item{Análise de pequenos sinais no \textbf{domínio da frequência}}
 \item{Circuitos não-lineares são \textbf{linearizados} ao redor do ponto de operação}
-
 \item{As fontes são definidas como fasores com módulo e fase}
 \item{Por exemplo: Fonte definida como \texttt{AC 1 0} = $1\measuredangle 0$} 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Análise AC - Opções de configuração}
+\begin{itemize}
+\item{\textit{Type of Sweep}}: seleciona se a varredura é feita por oitavas, por décadas, de forma linear ou para pontos especificados.
+\begin{itemize}
+\item{Oitava}: faixa de frequências de $f$ a $2 f$
+\item{Década}: faixa de frequências de $f$ a $10 f$
+\end{itemize}
+\item{\textit{Number of Points}}: número de pontos.
+\item{\textit{Start Frequency/Stop Frequency}}: frequências de início e de fim.
 \end{itemize}
 \end{frame}
 
