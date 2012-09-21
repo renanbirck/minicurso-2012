@@ -6,7 +6,7 @@
 \usepackage{mdwlist}
 \usepackage{pslatex}
 % Title Page
-\title{\textbf{Introdução à simulação de circuitos com o \textit{LTspice IV}}}
+\title{\textbf{Introdução à simulação de circuitos com o \textit{LTspice}}}
 \author{Renan Birck Pinheiro}
 
 
@@ -16,15 +16,17 @@
 \input{./capa.tex}
 
 \chapter{Introdução}
-A motivação para esse minicurso foi a necessidade de simulação de circuitos em diversas disciplinas; especificamente, ele foi motivado após vários alunos da disciplina de Circuitos Integrados Analógicos apresentaram dificuldade no uso do \textit{LTspice IV}, necessário à realização das atividades da cadeira.
+As primeiras versões do SPICE (\textit{Simulation Program with Integrated Circuit Emphasis}) foram desenvolvidas nos anos 70, visando (como o próprio nome já diz) a simulação de circuitos integrados (atividade na qual é inviável ou impossível a prototipagem). Inicialmente, devido aos limitados recursos computacionais da época, as simulações eram restritas a circuitos simples, e os resultados - após a simulação ser executada em computadores de grande porte - eram visualizados de forma textual.
 
-Aqui serão abordados os conceitos básicos do uso do software. Assuntos mais avançados, que infelizmente não podem ser abordados por questão de tempo, estão disponíveis no sistema de ajuda (aperte F1).
+Na década de 80, o SPICE foi reescrito em linguagem C no ambiente UNIX (versão chamada de SPICE3), permitindo o uso em computadores de pequeno/médio porte e \textit{workstations} com interfaces gráficas simples. 
 
-\chapter{Objetivos}
-O principal objetivo...
+Já nos anos 90, com o aumento exponencial da capacidade dos computadores pessoais, desenvolveram-se versões deste - com interfaces gráficas sofisticadas - para os sistemas operacionais mais utilizados, assim possibilitando o uso da ferramenta sem necessidade de contato com a linha de comando. Apesar destas mudanças, o mecanismo de funcionamento de um simulador é efetivamente o mesmo: empregam-se as equações e análises da teoria dos circuitos, junto com modelos equivalentes para semicondutores, para a análise numérica do circuito.
 
-\chapter{A interface do LTspice}
-Após instalado, o LTspice pode ser aberto a partir do Menu Iniciar ou do ícone criado na área de trabalho.
+A motivação para esse minicurso foi a necessidade de simulação de circuitos em diversas disciplinas; especificamente, ele foi motivado após vários alunos da disciplina de Circuitos Integrados Analógicos apresentaram dificuldade no uso do \textit{LTspice}, necessário à realização das atividades desta.
+
+Aqui serão abordados os conceitos básicos do uso do software. Assuntos mais avançados, que infelizmente não podem ser abordados por questão de tempo, estão disponíveis no sistema de ajuda (aperte F1 dentro do \textit{LTspice}).
+\chapter{A interface do \textit{LTspice}}
+Após instalado, o \textit{LTspice} pode ser aberto a partir do Menu Iniciar ou do ícone criado na área de trabalho. 
 
 \chapter{Links úteis e contato}
 \begin{itemize}
