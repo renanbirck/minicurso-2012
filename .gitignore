@@ -6,4 +6,5 @@
 *.nav
 *.snm
 *.toc
-
+*.raw
+*.net

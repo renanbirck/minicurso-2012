@@ -41,7 +41,7 @@
 \begin{frame} % slide SPICE
 \frametitle{SPICE}
 \begin{itemize}
-\item{\textbf{S}imulation \textbf{P}rogram \textbf{W}ith \textbf{I}ntegrated \textbf{C}ircuit \textbf{E}mphasis - Ferramenta de Simulação com Ênfase em Circuitos Integrados}
+\item{\textbf{S}imulation \textbf{P}rogram \textbf{W}ith \textbf{I}ntegrated \textbf{C}ircuit \textbf{E}mphasis - Programa de Simulação com Ênfase em Circuitos Integrados}
 \item{\textbf{Primeiras versões}: FORTRAN, anos 70, grandes computadores, modo texto}
 \item{\textbf{SPICE 2}: linguagem C, anos 80/90, computadores de pequeno/médio porte, interface gráfica simples}
 \item{\textbf{Versões atuais}: C/C++, computadores pessoais, interface gráfica avançada, desenho de circuitos}
@@ -57,7 +57,7 @@
 \begin{frame}
 Vantagens:
 \begin{itemize}
-\item{\textbf{Projeto}} mais rápido, podem-se testar diversos componentes antes da compra.
+\item{\textbf{Projeto}} mais rápido, podem-se testar diversos valores de componentes.
 \item{Realizar \textbf{medidas}} que muitas vezes são difíceis de fazer na bancada.
 \item{\textbf{Projeto iterativo}}, usando métodos de otimização para atender requisitos.
 \end{itemize}
@@ -70,8 +70,6 @@ Desvantagens:
 \item{\textbf{Não substitui prototipagem:} os modelos são aproximados, não levam efeitos térmicos ou as componentes parasitas da placa}
 \item{\textbf{Necessidade} de modelos para os componentes}
 \item{O simulador deverá \textbf{suportar} as tecnologias usadas}
-
-
 \item{Em geral: \textbf{lixo entra, lixo sai}. Os resultados das simulações são tão bons quanto os modelos e o projeto do circuito forem.}
 \end{itemize}
 \end{frame}
@@ -96,6 +94,32 @@ Desvantagens:
 
 \begin{frame}
 \frametitle{Desenhando um circuito}
+\begin{figure}[htb]
+\includegraphics[width=170px]{images/botoes_barra}
+\caption{Botões da barra}
+\label{fig:botoesbarra}
+\end{figure}
+(A maioria dos botões é auto-explicativa, então simplesmente coloquei os que podem causar mais dificuldade)
+\end{frame}
+
+\begin{frame}
+Todo circuito deve ter ao menos:
+\begin{itemize}
+\item Um terra (GND);
+\item Uma fonte de tensão ou de corrente;
+\item Um elemento qualquer (resistor, indutor, capacitor etc...).
+\end{itemize}
+\end{frame}
+\begin{frame}
+\frametitle{Teclas de atalho}
+\begin{itemize}
+\item{F3:} Desenhar fio
+\item{F4:} Etiquetar
+\item{F9:} Desfazer 
+\item{Ctrl-R:} Rotacionar componente
+\item{G:} Colocar terra
+
+\end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -109,17 +133,38 @@ Desvantagens:
 \begin{frame}
 \frametitle{Parâmetros: fontes de tensão/corrente}
 Clique com o botão direito na fonte e após clique em Advanced. Aparecerá uma janela com diversas configurações possíveis para a fonte.
+\begin{figure}[htb]
 \includegraphics[width=150px]{images/paramfonte.png}
+\end{figure}
 \end{frame}
 
 \begin{frame}
+\frametitle{Fonte de tensão: pulso}
+\begin{itemize}
+\item {$V_{off}$}: Valor inicial
+\item {$V_{on}$}: Valor do pulso
+\item {$T_{delay}$}: Atraso (contado a partir do 0 segundo)
+\item {$T_{r}$}: Tempo de subida 
+\item {$T_{f}$}: Tempo de descida
+\item {$T_{on}$}: Tempo ligado
+\item {$T_{period}$}: Período (1/frequência)
+\item {$N_{cycles}$}: Número de repetições (0 = infinitas)
+\end{itemize}
+Para $T_r$ e $T_f$, se omitidos o LTspice assume que eles são 10\% de $T_{period}$.
+Isso visa evitar problemas numéricos (onda trocando imediatamente de estado $\rightarrow$ $dV/dt = \infty$).
 \end{frame}
+\begin{figure}[htb]
+\includegraphics[width=200px]{images/square_wave}
+\end{figure}
+\begin{frame}
 
+\end{frame}
 \begin{frame}
 \frametitle{Parâmetros: resistores, capacitores e indutores}
 \begin{itemize}
 \item{Para capacitores e indutores, podemos definir \textbf{condições iniciais} de tensão e corrente, respectivamente...}
 \item{... mas elas só serão respeitadas se marcarmos \textit{Use initial Conditions} nos parâmetros de simulação}
+\item{Por padrão, os indutores têm uma resistência em série de 1 $m\Omega$. Se for desejado removê-la, clique com o botão direito nele e coloque 0 no campo \textit{Series Resistance}}
 \end{itemize}
 \end{frame}
 
@@ -128,7 +173,10 @@ Clique com o botão direito na fonte e após clique em Advanced. Aparecerá uma 
 \begin{itemize}
 \item{Modelos de semicondutores contêm os parâmetros que serão usados pelas equações de dispositivos.}
 \item{Normalmente esses modelos são fornecidos pelos fabricantes.}
-\item{Componentes mais complexos (\textit{op-amps}, \textit{buffers} etc...) estão disponíveis na forma de subcircuitos.}
+\item{Componentes mais complexos estão disponíveis na forma de subcircuitos.}
+\begin{itemize}
+\item{Subcircuito}: arquivo que contém as linhas de código necessárias para descrever um componente. Conceito similar ao de bibliotecas em linguagens de programação.
+\end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -145,7 +193,7 @@ Clique com o botão direito na fonte e após clique em Advanced. Aparecerá uma 
 \begin{itemize} 
 \item \textit{Stop Time}: por quanto tempo executar a simulação
 \item \textit{Time to Start Saving Data}: quando começar a salvar dados?
-\item \textit{Start external DC supplies at 0V}: iniciar as fontes DC em 0V; após 20 $\mu$s elas subirão ao nível especificado
+\item \textit{Start external DC supplies at 0V}: iniciar as fontes DC em 0V; após 20 $\mu$s elas subirão ao nível especificado. O famoso impulso unitário.
 \item \textit{Skip Initial Operating Point Solution}: usar as condições iniciais especificadas anteriormente (se não tiver nenhuma, ele usa 0 V), caso contrário ele tenta calcular um ponto de operação DC.
 \end{itemize}
 \end{frame}
@@ -162,7 +210,6 @@ Usamos o elemento $K$ para definir um acoplamento magnético entre dois indutore
 \begin{frame}
 \frametitle{Exemplo 3: Circuito a transistor}
 \end{frame}
-
 
 \begin{frame}
 \frametitle{Análise AC}
@@ -188,7 +235,27 @@ Usamos o elemento $K$ para definir um acoplamento magnético entre dois indutore
 \end{frame}
 
 \begin{frame}
+\frametitle{Usando o mesmo circuito do exemplo anterior...}
+Clique com o botão direito na análise (\texttt{.tran 25m}), mude para a aba \textit{AC Analysis} e preencha:
+\begin{itemize}
+
+\item{Type of Sweep}: Octave
+\item{Number of Points}: 1000
+\item{Start Frequency}: 1
+\item{Stop Frequency}: 1Meg
+\begin{itemize}
+\item{IMPORTANTÍSSIMO}: \textbf{m} é \textbf{mili} ($10^{-3}$), se quiseremos \textbf{mega} ($10^6$) temos que digitar \textbf{Meg}!
+\end{itemize}
+\end{itemize}
+Execute a simulação e clique no nó de saída (marcado com OUT).
+\end{frame}
+
+\begin{frame}
 \frametitle{Exemplo 4: Circuito com amplificador operacional}
+\begin{itemize}
+\item{O símbolo \texttt{opamp} fornece um opamp genérico. Porém, precisamos incluir o arquivo \texttt{opamp.sub}.}
+\item{Para isso, clique em \textit{SPICE Directive} e digite \texttt{.lib opamp.sub}}.
+\end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -200,6 +267,11 @@ Usamos o elemento $K$ para definir um acoplamento magnético entre dois indutore
 \end{frame}
 
 \begin{frame}
+\frametitle{Exemplo 6: Amplificador \textit{common source}}
+Para este exemplo, excepcionalmente usamos o símbolo \textit{nmos4}, já que nos interessa especificar as dimensões do transistor.
+\end{frame}
+
+\begin{frame}
 \frametitle{Análise de Fourier}
 \begin{itemize}
 \item Permite visualizar o conteúdo harmônico de um sinal, isto é, as frequências que formam esse sinal.
@@ -208,7 +280,7 @@ Usamos o elemento $K$ para definir um acoplamento magnético entre dois indutore
 \end{frame}
 
 \begin{frame}
-\frametitle{Exemplo 6: Modulador AM a transistor}
+\frametitle{Exemplo 7: Modulador AM a transistor}
 \end{frame}
 
 \begin{frame}
@@ -228,7 +300,7 @@ Da teoria de Fourier, sabemos que ao multiplicarmos um sinal de frequência $F_s
 \end{frame}
 
 \begin{frame}
-\frametitle{Exemplo 7: Amplificador \textit{push-pull}}
+\frametitle{Exemplo 8: Amplificador \textit{push-pull}}
 \end{frame}
 
 \begin{frame}
