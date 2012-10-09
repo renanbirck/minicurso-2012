@@ -155,11 +155,34 @@ Isso visa evitar problemas numéricos (onda trocando imediatamente de estado $\r
 \end{frame}
 \begin{figure}[htb]
 \includegraphics[width=200px]{images/square_wave}
+\caption{Ilustração dos parâmetros.}
 \end{figure}
 \begin{frame}
 
+\begin{frame}
+\frametitle{Fonte de tensão: seno}
+Uma fonte senoidal descrita por
+\begin{equation}
+V_{DC} + A \sin (2 \pi f t + \phi) \exp(\theta t)
+\end{equation}
+\begin{itemize}
+\item{DC Offset}: Valor DC da fonte ($V_{DC}$)
+\item{Amplitude}: Valor pico-a-pico ($A$)
+\item{Freq (Hz)}: Frequência ($f$)
+\item{$T_{delay}$}: Atraso (contado a partir do 0 segundo)
+\item{$\theta$ (1/s)}: Amortecimento da onda
+\item{$\phi$ (deg)}: Fase (em graus)
+\item{$N_{cycles}$}: Número de ciclos
+\end{frame}
+O valor inicial da onda é dado pela fase.
 \end{frame}
 \begin{frame}
+
+\begin{frame}
+\frametitle{Fonte de tensão: PWL}
+Uma fonte descrita por pares tempo-valor, interpolando entre os pontos.
+\begin{frame}
+
 \frametitle{Parâmetros: resistores, capacitores e indutores}
 \begin{itemize}
 \item{Para capacitores e indutores, podemos definir \textbf{condições iniciais} de tensão e corrente, respectivamente...}
