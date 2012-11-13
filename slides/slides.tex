@@ -38,6 +38,7 @@
 \end{itemize}
 \end{frame} % slide introdução
 
+
 \begin{frame} % slide SPICE
 \frametitle{SPICE}
 \begin{itemize}
@@ -54,7 +55,9 @@
 \end{itemize}
 \end{frame} % slide SPICE
 
-\begin{frame}
+
+
+\begin{frame} % slide vantagens
 Vantagens:
 \begin{itemize}
 \item{\textbf{Projeto}} mais rápido, podem-se testar diversos valores de componentes.
@@ -62,9 +65,9 @@ Vantagens:
 \item{\textbf{Projeto iterativo}}, usando métodos de otimização para atender requisitos.
 \end{itemize}
 
-\end{frame}
+\end{frame} % slide vantagens
 
-\begin{frame}
+\begin{frame} % slide desvantagens
 Desvantagens:
 \begin{itemize}
 \item{\textbf{Não substitui prototipagem:} os modelos são aproximados, não levam efeitos térmicos ou as componentes parasitas da placa}
@@ -80,11 +83,11 @@ Desvantagens:
 \includegraphics[width=170px]{images/tirinha33}
 \caption{O simulador é uma "máquina ignorante" que só faz o que ele é mandado. Pena que ele não faz café}
 \label{fig:lixoentrasai}
-\end{figure}
+\end{figure} 
 
-\end{frame}
+\end{frame} % slide desvantagens
 
-\begin{frame}
+\begin{frame} % Obtendo e instalando o LTspice
 \frametitle{Obtendo e instalando o LTspice}
 \begin{itemize}
 \item \url{http://www.linear.com/ltspice} $\rightarrow$ \textit{Download LTspice IV}
@@ -92,7 +95,7 @@ Desvantagens:
 \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame} % Desenhando um circuito
 \frametitle{Desenhando um circuito}
 \begin{figure}[htb]
 \includegraphics[width=170px]{images/botoes_barra}
@@ -102,7 +105,7 @@ Desvantagens:
 (A maioria dos botões é auto-explicativa, então simplesmente coloquei os que podem causar mais dificuldade)
 \end{frame}
 
-\begin{frame}
+\begin{frame} % Desenhando um circuito
 Todo circuito deve ter ao menos:
 \begin{itemize}
 \item Um terra (GND);
@@ -110,7 +113,8 @@ Todo circuito deve ter ao menos:
 \item Um elemento qualquer (resistor, indutor, capacitor etc...).
 \end{itemize}
 \end{frame}
-\begin{frame}
+
+\begin{frame} % Teclas de atalho
 \frametitle{Teclas de atalho}
 \begin{itemize}
 \item{F3:} Desenhar fio
@@ -122,7 +126,7 @@ Todo circuito deve ter ao menos:
 \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame} % Componentes
 \frametitle{Componentes}
 \begin{itemize}
 \item {Acessíveis pelo teclado:} Resistor (R), capacitor (C), indutor (L), diodo (D)
@@ -130,7 +134,7 @@ Todo circuito deve ter ao menos:
 \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame} % Parâmetros ftes V/I
 \frametitle{Parâmetros: fontes de tensão/corrente}
 Clique com o botão direito na fonte e após clique em Advanced. Aparecerá uma janela com diversas configurações possíveis para a fonte.
 \begin{figure}[htb]
@@ -138,7 +142,7 @@ Clique com o botão direito na fonte e após clique em Advanced. Aparecerá uma 
 \end{figure}
 \end{frame}
 
-\begin{frame}
+\begin{frame} % Fte pulso
 \frametitle{Fonte de tensão: pulso}
 \begin{itemize}
 \item {$V_{off}$}: Valor inicial
@@ -153,17 +157,18 @@ Clique com o botão direito na fonte e após clique em Advanced. Aparecerá uma 
 Para $T_r$ e $T_f$, se omitidos o LTspice assume que eles são 10\% de $T_{period}$.
 Isso visa evitar problemas numéricos (onda trocando imediatamente de estado $\rightarrow$ $dV/dt = \infty$).
 \end{frame}
-\begin{figure}[htb]
-\includegraphics[width=200px]{images/square_wave}
-\caption{Ilustração dos parâmetros.}
-\end{figure}
-\begin{frame}
 
-\begin{frame}
+
+ \begin{frame}
+ \begin{center}
+ \includegraphics[width=200px]{images/square_wave}
+ \end{center}
+ \end{frame}
+\begin{frame} % Fte seno
 \frametitle{Fonte de tensão: seno}
 Uma fonte senoidal descrita por
 \begin{equation}
-V_{DC} + A \sin (2 \pi f t + \phi) \exp(\theta t)
+V_{DC} + A \sin (2 \pi f t + \phi) \exp(-\theta t)
 \end{equation}
 \begin{itemize}
 \item{DC Offset}: Valor DC da fonte ($V_{DC}$)
@@ -173,16 +178,16 @@ V_{DC} + A \sin (2 \pi f t + \phi) \exp(\theta t)
 \item{$\theta$ (1/s)}: Amortecimento da onda
 \item{$\phi$ (deg)}: Fase (em graus)
 \item{$N_{cycles}$}: Número de ciclos
-\end{frame}
+\end{itemize}
 O valor inicial da onda é dado pela fase.
 \end{frame}
-\begin{frame}
 
 \begin{frame}
 \frametitle{Fonte de tensão: PWL}
 Uma fonte descrita por pares tempo-valor, interpolando entre os pontos.
-\begin{frame}
+\end{frame}
 
+\begin{frame}
 \frametitle{Parâmetros: resistores, capacitores e indutores}
 \begin{itemize}
 \item{Para capacitores e indutores, podemos definir \textbf{condições iniciais} de tensão e corrente, respectivamente...}
@@ -203,9 +208,24 @@ Uma fonte descrita por pares tempo-valor, interpolando entre os pontos.
 \end{itemize}
 \end{frame}
 
+\begin{frame}
+\frametitle{}
+\begin{itemize}
+\item{Após desenharmos o circuito, clicar no botão \textit{Run} (o do bonequinho correndo) ou apertar F9}
+\item{Surgirá a caixa de diálogo para escolhermos o tipo de simulação:}
+\begin{itemize}
+\item{Transiente (\textit{Transient})}
+\item{AC (domínio da frequência)}
+\item{DC}
+\item{Varredura \textit{sweep}}
+\item{Ruído, FT e ponto de operação (não usaremos)}
+\end{itemize}
+\end{itemize}
+\end{frame}
+
 
 \begin{frame}
-\frametitle{Análise transiente}
+\frametitle{Análise transiente (\textit{Transient})}
 \begin{itemize}
 \item{Simulação no domínio do tempo, para circuitos lineares ou não, empregando as equações de dispositivos e as técnicas de análise de circuitos}
 \end{itemize}
@@ -278,6 +298,7 @@ Execute a simulação e clique no nó de saída (marcado com OUT).
 \begin{itemize}
 \item{O símbolo \texttt{opamp} fornece um opamp genérico. Porém, precisamos incluir o arquivo \texttt{opamp.sub}.}
 \item{Para isso, clique em \textit{SPICE Directive} e digite \texttt{.lib opamp.sub}}.
+\item{Mas cuidado: esse opamp genérico é \textbf{ideal} e não tem limites de frequência ou de tensão.}
 \end{itemize}
 \end{frame}
 
@@ -344,4 +365,7 @@ O código-fonte desses slides e os circuitos empregados estão disponíveis em \
 
 Crédito das tirinhas: Vida de Programador \url{http://www.vidadeprogramador.com.br}
 \end{frame}
+
+
+
 \end{document}
