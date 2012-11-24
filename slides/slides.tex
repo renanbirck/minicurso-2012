@@ -8,7 +8,7 @@
 \usepackage{mdwlist}
 \usepackage{textcomp}
 \usepackage{graphicx}
-\usetheme{Antibes}
+\usetheme{Copenhagen}
 
 
 \title{Introdução à simulação de circuitos com o \textit{LTspice IV}}
@@ -122,7 +122,9 @@ Todo circuito deve ter ao menos:
 \item{F9:} Desfazer 
 \item{Ctrl-R:} Rotacionar componente
 \item{G:} Colocar terra
-
+\begin{itemize}
+\item{É conveniente colocar etiquetas nos pontos onde queremos medir valores.}
+\end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -136,7 +138,11 @@ Todo circuito deve ter ao menos:
 
 \begin{frame} % Parâmetros ftes V/I
 \frametitle{Parâmetros: fontes de tensão/corrente}
-Clique com o botão direito na fonte e após clique em Advanced. Aparecerá uma janela com diversas configurações possíveis para a fonte.
+\begin{itemize}
+\item {DC Value}: Valor DC da fonte.
+\item {Series Resistance}: Resistência em série com a fonte.
+\end{itemize}
+Para definir parâmetros AC, clique com o botão direito na fonte e após clique em Advanced. Aparecerá uma janela com diversas configurações possíveis para a fonte.
 \begin{figure}[htb]
 \includegraphics[width=150px]{images/paramfonte.png}
 \end{figure}
@@ -223,6 +229,16 @@ Uma fonte descrita por pares tempo-valor, interpolando entre os pontos.
 \end{itemize}
 \end{frame}
 
+\begin{frame}
+\begin{itemize}
+\item{Após simularmos o circuito, surgirá uma janela preta: a janela de gráficos.}
+\item{Basta clicar em cima de um fio para medir a tensão nele, ou em cima de um componente para medir a corrente circulando por ele.}
+\item{Pressionando CTRL-ALT e clicando em cima de um componente será plotada a dissipação de energia deste.}
+\item{Pressionando CTRL e clicando sobre a legenda de um dos gráficos, será feita uma série de medições.}
+\item{Clicando sobre a legenda de um dos gráficos, abrirá a janela do cursor para medições.}
+\item{Apertando DELETE, o cursor vira uma tesoura - clique na legenda para apagar o gráfico.}
+\end{itemize}
+\end{frame}
 
 \begin{frame}
 \frametitle{Análise transiente (\textit{Transient})}
@@ -243,15 +259,27 @@ Uma fonte descrita por pares tempo-valor, interpolando entre os pontos.
 
 \begin{frame}
 \frametitle{Exemplo 1: Circuitos RC e RLC}
+Arquivo: \texttt{ex1\_rc\_rlc.asc}
+\begin{itemize}
+\item{Execute a simulação e meça a tensão nos pontos V1 e V2.}
+\item{Tente alterar o valor de um dos componentes e reexecutar a simulação.}
+\end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Exemplo 2: Transformador}
-Usamos o elemento $K$ para definir um acoplamento magnético entre dois indutores.
+Arquivo: \texttt{ex2\_transformador.asc}
+Usamos o elemento $K$ para definir um acoplamento magnético entre dois indutores. 
+A relação entre os indutores é dada por $\frac{L_1}{L_2} = \frac{V_1}{V_2}^2$
+\begin{itemize}
+\item{Execute a simulação e meça a tensão no ponto "saída". CTRL-Clique na legenda do gráfico para medir o valor RMS desta}.
+\item{Aperte CTRL-ALT e clique no resistor de carga (R1) para medir a potência}
+\end{itemize}
 \end{frame}
 
 \begin{frame}
-\frametitle{Exemplo 3: Circuito a transistor}
+\frametitle{Exemplo 3: Circuito amplificador a transistor}
+Arquivo: \texttt{ex3\_mic\_preamp.asc}
 \end{frame}
 
 \begin{frame}
@@ -287,14 +315,15 @@ Clique com o botão direito na análise (\texttt{.tran 25m}), mude para a aba \t
 \item{Start Frequency}: 1
 \item{Stop Frequency}: 1Meg
 \begin{itemize}
-\item{IMPORTANTÍSSIMO}: \textbf{m} é \textbf{mili} ($10^{-3}$), se quiseremos \textbf{mega} ($10^6$) temos que digitar \textbf{Meg}!
+\item{\textbf{Importante}}: \textbf{m} é \textbf{mili} ($10^{-3}$), se quiseremos \textbf{mega} ($10^6$) temos que digitar \textbf{Meg}!
 \end{itemize}
 \end{itemize}
-Execute a simulação e clique no nó de saída (marcado com OUT).
+Execute a simulação e clique no nó de saída (marcado com OUT). No eixo \textbf{esquerdo}: magnitude; no eixo \textbf{direito}: fase.
 \end{frame}
 
 \begin{frame}
 \frametitle{Exemplo 4: Circuito com amplificador operacional}
+Arquivo: \texttt{ex4\_opamp.asc}
 \begin{itemize}
 \item{O símbolo \texttt{opamp} fornece um opamp genérico. Porém, precisamos incluir o arquivo \texttt{opamp.sub}.}
 \item{Para isso, clique em \textit{SPICE Directive} e digite \texttt{.lib opamp.sub}}.
@@ -304,14 +333,20 @@ Execute a simulação e clique no nó de saída (marcado com OUT).
 
 \begin{frame}
 \frametitle{Análise de varredura DC}
+\begin{itemize}
+\item{Permite variar uma fonte e verificar a resposta dos outros componentes a esta variação.}
+\item{Capacitores são tratados como curtos e indutores como circuito aberto.}
+\end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Exemplo 5: Curvas do diodo}
+Arquivo: \texttt{ex5\_diodo.asc}
 \end{frame}
 
 \begin{frame}
 \frametitle{Exemplo 6: Amplificador \textit{common source}}
+Arquivos: \texttt{ex6\_cs.asc} e \texttt{scn05.mod} (arquivo que contém o modelo do nosso transistor)
 Para este exemplo, excepcionalmente usamos o símbolo \textit{nmos4}, já que nos interessa especificar as dimensões do transistor.
 \end{frame}
 
@@ -319,17 +354,24 @@ Para este exemplo, excepcionalmente usamos o símbolo \textit{nmos4}, já que no
 \frametitle{Análise de Fourier}
 \begin{itemize}
 \item Permite visualizar o conteúdo harmônico de um sinal, isto é, as frequências que formam esse sinal.
+\item Fazer uma simulação transiente; após, clicar com o botão direito na janela de gráfico e escolher \textit{view}$\rightarrow$\textit{FFT}.
+\item \textit{Use extent of simulation data}: Usar todos os dados da simulação.
+\item \textit{Use current zoom extent}: Usar a faixa de tempo que estiver visível na tela.
+\item \textit{Specify a time range}: Especificar uma faixa de tempo.
 \item \textbf{Sempre} especificar o parâmetro \textit{plotwinsize=0}, para desativar a compactação (que pode resultar na perda de componentes do sinal).
 \end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Exemplo 7: Modulador AM a transistor}
+Arquivo: \texttt{ex7\_modulador.asc}
 \end{frame}
 
 \begin{frame}
 \frametitle{Resultados}
 Da teoria de Fourier, sabemos que ao multiplicarmos um sinal de frequência $F_s$ por uma portadora de frequência $F_c$ (modulação em amplitude), obtemos as harmônicas $F_s + F_c$ e $F_s - F_c$. E isso fica visível no gráfico.
+
+Para melhorar a visualização (usando V em vez de dB): clique com o botão esquerdo no eixo Y e selecione a escala linear.
 \end{frame}
 
 \begin{frame}
@@ -345,6 +387,7 @@ Da teoria de Fourier, sabemos que ao multiplicarmos um sinal de frequência $F_s
 
 \begin{frame}
 \frametitle{Exemplo 8: Amplificador \textit{push-pull}}
+Arquivo: \texttt{ex8\_ampl.asc}
 \end{frame}
 
 \begin{frame}
