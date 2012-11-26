@@ -92,6 +92,7 @@ Desvantagens:
 \begin{itemize}
 \item \url{http://www.linear.com/ltspice} $\rightarrow$ \textit{Download LTspice IV}
 \item Proceder com a instalação, será criado um ícone na área de trabalho.
+\item Ele também pode ser instalado em um pen-drive, basta especificar o local adequado na hora de instalar.
 \end{itemize}
 \end{frame}
 
@@ -119,6 +120,7 @@ Todo circuito deve ter ao menos:
 \begin{itemize}
 \item{F3:} Desenhar fio
 \item{F4:} Etiquetar
+\item{F7:} Mover um componente
 \item{F9:} Desfazer 
 \item{Ctrl-R:} Rotacionar componente
 \item{G:} Colocar terra
@@ -132,7 +134,7 @@ Todo circuito deve ter ao menos:
 \frametitle{Componentes}
 \begin{itemize}
 \item {Acessíveis pelo teclado:} Resistor (R), capacitor (C), indutor (L), diodo (D)
-\item {No menu de componentes (aperte F2)}: Fonte de tensão (\textit{Voltage}) e de corrente (\textit{Current}), transistores (\textit{npn/pnp}, \textit{njf/pjf} (FET), \textit{nmos/pmos} (MOSFET))
+\item {No menu de componentes (aperte F2)}: Fonte de tensão (\textit{Voltage}) e de corrente (\textit{Current}), transistores (\textit{npn/pnp}, \textit{njf/pjf} (FET), \textit{nmos/pmos} (MOSFET)), entre outros
 \end{itemize}
 \end{frame}
 
@@ -142,7 +144,7 @@ Todo circuito deve ter ao menos:
 \item {DC Value}: Valor DC da fonte.
 \item {Series Resistance}: Resistência em série com a fonte.
 \end{itemize}
-Para definir parâmetros AC, clique com o botão direito na fonte e após clique em Advanced. Aparecerá uma janela com diversas configurações possíveis para a fonte.
+Para definir parâmetros AC, clique com o botão direito na fonte e após clique em \textit{Advanced}. Aparecerá uma janela com diversas configurações possíveis para a fonte.
 \begin{figure}[htb]
 \includegraphics[width=150px]{images/paramfonte.png}
 \end{figure}
@@ -190,13 +192,13 @@ O valor inicial da onda é dado pela fase.
 
 \begin{frame}
 \frametitle{Fonte de tensão: PWL}
-Uma fonte descrita por pares tempo-valor, interpolando entre os pontos.
+Uma fonte descrita por pares tempo-valor, interpolando entre os pontos definidos na tabela.
 \end{frame}
 
 \begin{frame}
 \frametitle{Parâmetros: resistores, capacitores e indutores}
 \begin{itemize}
-\item{Para capacitores e indutores, podemos definir \textbf{condições iniciais} de tensão e corrente, respectivamente...}
+\item{Para capacitores e indutores, podemos definir \textbf{condições iniciais} de tensão e corrente, respectivamente (digitando \texttt{IC=valor})...}
 \item{... mas elas só serão respeitadas se marcarmos \textit{Use initial Conditions} nos parâmetros de simulação}
 \item{Por padrão, os indutores têm uma resistência em série de 1 $m\Omega$. Se for desejado removê-la, clique com o botão direito nele e coloque 0 no campo \textit{Series Resistance}}
 \end{itemize}
@@ -205,6 +207,7 @@ Uma fonte descrita por pares tempo-valor, interpolando entre os pontos.
 \begin{frame}
 \frametitle{Parâmetros: semicondutores}
 \begin{itemize}
+\item{Para selecionar o diodo/transistor a ser usado: clique com o botão direito e selecione \textit{Pick New [Diode/Transistor]}; escolha o modelo na lista}
 \item{Modelos de semicondutores contêm os parâmetros que serão usados pelas equações de dispositivos.}
 \item{Normalmente esses modelos são fornecidos pelos fabricantes.}
 \item{Componentes mais complexos estão disponíveis na forma de subcircuitos.}
@@ -273,7 +276,7 @@ Usamos o elemento $K$ para definir um acoplamento magnético entre dois indutore
 A relação entre os indutores é dada por $\frac{L_1}{L_2} = \frac{V_1}{V_2}^2$
 \begin{itemize}
 \item{Execute a simulação e meça a tensão no ponto "saída". CTRL-Clique na legenda do gráfico para medir o valor RMS desta}.
-\item{Aperte CTRL-ALT e clique no resistor de carga (R1) para medir a potência}
+\item{Aperte CTRL-ALT e clique no resistor de carga (R1) para medir a potência dissipada}
 \end{itemize}
 \end{frame}
 
@@ -340,13 +343,14 @@ Arquivo: \texttt{ex4\_opamp.asc}
 \end{frame}
 
 \begin{frame}
-\frametitle{Exemplo 5: Curvas do diodo}
+\frametitle{Exemplo 5: Regulador com diodo zener}
 Arquivo: \texttt{ex5\_diodo.asc}
 \end{frame}
 
 \begin{frame}
 \frametitle{Exemplo 6: Amplificador \textit{common source}}
 Arquivos: \texttt{ex6\_cs.asc} e \texttt{scn05.mod} (arquivo que contém o modelo do nosso transistor)
+
 Para este exemplo, excepcionalmente usamos o símbolo \textit{nmos4}, já que nos interessa especificar as dimensões do transistor.
 \end{frame}
 
@@ -377,7 +381,7 @@ Para melhorar a visualização (usando V em vez de dB): clique com o botão esqu
 \begin{frame}
 \frametitle{Medição de THD com Fourier}
 \begin{itemize}
-\item Excita-se o circuito com um sinal senoidal naentrada, e determina-se o conteúdo harmônico da saída.
+\item Excita-se o circuito com um sinal senoidal na entrada, e determina-se o conteúdo harmônico da saída.
 \begin{itemize}
 \item Sintaxe: \texttt{.four freq-fundamental V(out)}
 \item Obs.: \textbf{definir uma análise transiente antes}
@@ -388,6 +392,16 @@ Para melhorar a visualização (usando V em vez de dB): clique com o botão esqu
 \begin{frame}
 \frametitle{Exemplo 8: Amplificador \textit{push-pull}}
 Arquivo: \texttt{ex8\_ampl.asc}
+\begin{itemize}
+\item O modelo do op-amp \textit{LF356} encontra-se no arquivo \texttt{LF356.MOD}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Opções de configuração}
+\begin{itemize}
+\item \textit{Tools} $\rightarrow$ \textit{Color Preferences}
+\end{itemize}
 \end{frame}
 
 \begin{frame}
