@@ -10,7 +10,6 @@
 \usepackage{graphicx}
 \usetheme{Copenhagen}
 
-
 \title{\textit{LTspice IV} (um pouco mais) avançado}
 \author{Renan Birck Pinheiro}
 \institute{Universidade Federal de Santa Maria}
@@ -22,15 +21,43 @@
 \end{frame}
 
 \begin{frame} % slide introdução
-\frametitle{Varredura de parâmetros}
+\frametitle{Parâmetros}
 \begin{itemize}
 \item É interessante usar parâmetros quando temos vários componentes com o mesmo valor.
 \item Sintaxe: \texttt{.param NOME VALOR}; e daí em diante se referir usando \{NOME\} (assim mesmo, entre colchetes).
+\item Também podemos definir valores de componentes como expressões matemáticas usando parâmetros.
+\end{itemize}
+\end{frame} % slide introdução
+
+\begin{frame} % slide introdução
+\frametitle{Varredura de parâmetros}
+\begin{itemize}
+\item Permite repetir uma simulação variando parâmetros.
+\item Sintaxe: \texttt{.step param NOME MIN MAX PASSO}; para variar o paràmetro \texttt{NOME} de \texttt{MIN} a \texttt{MAX} em passos de \texttt{PASSO}.
 \end{itemize}
 \end{frame} % slide introdução
 
 \begin{frame}
+\frametitle{Ex.: Potenciômetro}
+\begin{itemize}
+\item Um resistor de valor $R$ e outro de valor $R_max - R$.
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}
 \frametitle{O comando \texttt{.measure}}
+\begin{itemize}
+\item Permite medições automatizadas, sem precisar ficar lendo gráficos.
+\item Sintaxes possíveis:
+\begin{itemize}
+\item \texttt{.meas TIPO\_ANALISE NOME find VALOR at=TEMPO} (medir VALOR quando atingir TEMPO)
+\item \texttt{.meas TIPO\_ANALISE NOME AVG/RMS/MAX/MIN/INTEG/PP expressao} (medir média/RMS/máximo/mínimo/integral/pico-pico da expressão)
+\end{itemize}
+\item Ex.: \texttt{.meas tran ganho find v(out) at=15m} (medir V(out) em 15 ms)
+\item Ex.: \texttt{.meas tran media\_consumo avg v(out)*I(Rload)} (medir média da dissipação na carga)
+
+\end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -38,6 +65,17 @@
 \end{frame}
 
 \begin{frame}
+\frametitle{Simulação digital}
+\begin{itemize}
+\item O LTspice tem recursos básicos para a simulação de circuitos digitais. Estão na categoria de componentes "Digital"
+\item 
+\end{itemize}
+\begin{frame}
+
+\begin{frame}
+\frametitle{Projeto usando blocos}
+\end{frame}
+
 {\LARGE OBRIGADO!}
 \end{frame}
 
@@ -45,8 +83,6 @@
 Contatos: \url{renan.ee.ufsm@gmail.com} \url{http://facebook.com/renanbirck} \newline
 
 O código-fonte desses slides e os circuitos empregados estão disponíveis em \url{https://github.com/renanbirck/minicurso-2012} ou com o autor.
-
-Crédito das tirinhas: Vida de Programador \url{http://www.vidadeprogramador.com.br}
 \end{frame}
 
 
