@@ -176,11 +176,11 @@ Isso visa evitar problemas numéricos (onda trocando imediatamente de estado $\r
 \frametitle{Fonte de tensão: seno}
 Uma fonte senoidal descrita por
 \begin{equation}
-V_{DC} + A \sin (2 \pi f t + \phi) \exp(-\theta t)
+V_{DC} + V_{p} \sin (2 \pi f t + \phi) \exp(-\theta t)
 \end{equation}
 \begin{itemize}
 \item{DC Offset}: Valor DC da fonte ($V_{DC}$)
-\item{Amplitude}: Valor pico-a-pico ($A$)
+\item{Amplitude}: Valor pico-a-pico ($V_{p}$)
 \item{Freq (Hz)}: Frequência ($f$)
 \item{$T_{delay}$}: Atraso (contado a partir do 0 segundo)
 \item{$\theta$ (1/s)}: Amortecimento da onda
@@ -227,7 +227,7 @@ Uma fonte descrita por pares tempo-valor, interpolando entre os pontos definidos
 \item{AC (domínio da frequência)}
 \item{DC}
 \item{Varredura \textit{sweep}}
-\item{Ruído, FT e ponto de operação (não usaremos)}
+\item{Ruído e função de transferência (não usaremos)}
 \end{itemize}
 \end{itemize}
 \end{frame}
@@ -238,10 +238,16 @@ Uma fonte descrita por pares tempo-valor, interpolando entre os pontos definidos
 \item{Basta clicar em cima de um fio para medir a tensão nele, ou em cima de um componente para medir a corrente circulando por ele.}
 \item{Pressionando CTRL-ALT e clicando em cima de um componente será plotada a dissipação de energia deste.}
 \item{Pressionando CTRL e clicando sobre a legenda de um dos gráficos, será feita uma série de medições.}
+\pause
 \item{Clicando sobre a legenda de um dos gráficos, abrirá a janela do cursor para medições.}
+\item{Clicando sobre o botão direito na legenda, aparecerá a janela para entrada de expressões matemáticas.}
+\item{Clicando duas vezes nos eixos, aparecerá a janela para definir começo/fim deles.}
+\pause
 \item{Apertando DELETE, o cursor vira uma tesoura - clique na legenda para apagar o gráfico.}
 \end{itemize}
 \end{frame}
+
+
 
 \begin{frame}
 \frametitle{Análise transiente (\textit{Transient})}
@@ -265,6 +271,7 @@ Uma fonte descrita por pares tempo-valor, interpolando entre os pontos definidos
 Arquivo: \texttt{ex1\_rc\_rlc.asc}
 \begin{itemize}
 \item{Execute a simulação e meça a tensão nos pontos V1 e V2.}
+\item{Dê zoom em um dos períodos da onda (arraste e solte ou use a lupa na barra de ferramentas).}
 \item{Tente alterar o valor de um dos componentes e reexecutar a simulação.}
 \end{itemize}
 \end{frame}
@@ -281,9 +288,20 @@ A relação entre os indutores é dada por $\frac{L_1}{L_2} = \frac{V_1}{V_2}^2$
 \end{frame}
 
 \begin{frame}
+\frametitle{Configurações: gráfico}
+\begin{itemize}
+\item{Clique com o botão direito na legenda.}
+\item{\textit{Attached Cursors}: permite selecionar qual dos cursores queremos usar para fazer as medições - podemos medir dois pontos ao mesmo tempo}
+\item{\textit{Default color}}: define a cor do gráfico selecionado
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
 \frametitle{Exemplo 3: Circuito amplificador a transistor}
 Arquivo: \texttt{ex3\_mic\_preamp.asc}
 \end{frame}
+
 
 \begin{frame}
 \frametitle{Análise AC}
@@ -355,6 +373,12 @@ Para este exemplo, excepcionalmente usamos o símbolo \textit{nmos4}, já que no
 \end{frame}
 
 \begin{frame}
+\frametitle{Análise de ponto de operação}
+\begin{itemize}
+\item{Determina os valores das tensões/correntes em todos os pontos de um circuito excitado com uma fonte DC.}
+\end{itemize}
+\end{frame}
+\begin{frame}
 \frametitle{Análise de Fourier}
 \begin{itemize}
 \item Permite visualizar o conteúdo harmônico de um sinal, isto é, as frequências que formam esse sinal.
@@ -367,7 +391,7 @@ Para este exemplo, excepcionalmente usamos o símbolo \textit{nmos4}, já que no
 \end{frame}
 
 \begin{frame}
-\frametitle{Exemplo 7: Modulador AM a transistor}
+\frametitle{Exemplo 7: Modulador AM}
 Arquivo: \texttt{ex7\_modulador.asc}
 \end{frame}
 
@@ -400,7 +424,8 @@ Arquivo: \texttt{ex8\_ampl.asc}
 \begin{frame}
 \frametitle{Opções de configuração}
 \begin{itemize}
-\item \textit{Tools} $\rightarrow$ \textit{Color Preferences}
+\item \textit{Tools} $\rightarrow$ \textit{Color Preferences}: mudar as cores da interface gráfica.
+\item \textit{Tools} $\rightarrow$ \textit{Control Panel}: configurações internas do LTspice (normalmente não é necessário mexer nelas).
 \end{itemize}
 \end{frame}
 
@@ -408,6 +433,7 @@ Arquivo: \texttt{ex8\_ampl.asc}
 \frametitle{Links de interesse}
 \begin{itemize}
 \item \url{http://tech.groups.yahoo.com/group/LTspice/} - grupo de usuários do LTspice
+\item \url{http://ltwiki.org/index.php5?title=Main\_Page} - wiki não-oficial
 \end{itemize}
 \end{frame}
 
