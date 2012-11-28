@@ -41,7 +41,6 @@
 \frametitle{Ex.: Potenciômetro}
 \begin{itemize}
 \item Um resistor de valor $R$ e outro de valor $R_max - R$.
-
 \end{itemize}
 \end{frame}
 
@@ -56,35 +55,67 @@
 \end{itemize}
 \item Ex.: \texttt{.meas tran ganho find v(out) at=15m} (medir V(out) em 15 ms)
 \item Ex.: \texttt{.meas tran media\_consumo avg v(out)*I(Rload)} (medir média da dissipação na carga)
-
 \end{itemize}
 \end{frame}
+
 
 \begin{frame}
 \frametitle{Obtendo modelos dos sites de fabricantes}
 \end{frame}
 
 \begin{frame}
+\frametitle{... não funcionou!}
+Pode acontecer do LTspice não conseguir simular um circuito.
+\begin{itemize}
+\item Verifique se você colocou terra, que todos os componentes estão com valores coerentes (cuidado pra não confundir m e Meg)
+\item Coloque uma resistência em série com cada fonte de tensão.
+\item Tente usar a opção \texttt{.option cshunt=1e-12} (ela coloca um capacitor em cada nó para tentar melhorar a convergência)
+\end{itemize}
+Se não adiantar, então um dos modelos que você está usando é de má qualidade (acontece com muitos fabricantes).
+\end{frame}
+
+
+\begin{frame}
 \frametitle{Simulação digital}
 \begin{itemize}
-\item O LTspice tem recursos básicos para a simulação de circuitos digitais. Estão na categoria de componentes "Digital"
-\item 
+\item O LTspice tem recursos básicos para a simulação de circuitos digitais. Estão na categoria de componentes "Digital".
+\item Parâmetros: Vhigh, Vlow e td (Tensão do \texttt{1}, tensão do \texttt{0} e atraso de propagação)
 \end{itemize}
-\begin{frame}
-
-\begin{frame}
-\frametitle{Projeto usando blocos}
 \end{frame}
 
-{\LARGE OBRIGADO!}
+\begin{frame}
+\frametitle{Projetando com blocos}
+\begin{itemize}
+\item Permite que não precisemos repetir o mesmo circuito várias vezes, basta instanciar um bloco.
+\item Blocos podem ser reutilizados entre projetos diferentes, podendo-se criar uma biblioteca de blocos.
+\end{itemize}
 \end{frame}
+
+\begin{frame}
+\frametitle{Criando blocos}
+\begin{itemize}
+\item Desenhe o circuito a ser transformado em bloco, colocando conectores nas entradas/saídas deles.
+\item Podemos usar parâmetros dentro de um subcircuito (usando a sintaxe do \texttt{.param}).
+\item Salve esse circuito em um diretório novo (para facilitar a organização).
+\item No menu Hierarchy, selecione \texttt{Open this sheet's symbol}. Ele vai pedir para confirmar a criação de um novo símbolo.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Usando blocos}
+\begin{itemize}
+\item Crie um circuito vazio e salve no mesmo diretório onde você salvou o circuito anterior.
+\item Adicione um componente
+\end{itemize}
+\end{frame}
+
+
 
 \begin{frame}
 Contatos: \url{renan.ee.ufsm@gmail.com} \url{http://facebook.com/renanbirck} \newline
 
 O código-fonte desses slides e os circuitos empregados estão disponíveis em \url{https://github.com/renanbirck/minicurso-2012} ou com o autor.
 \end{frame}
-
 
 
 \end{document}
