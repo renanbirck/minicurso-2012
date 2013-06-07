@@ -1,10 +1,15 @@
-\documentclass[]{report}
+\documentclass[]{book}
 \usepackage[portuguese]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{mdwlist}
-\usepackage{pslatex}
+%\usepackage{pslatex}
+\usepackage{charter}
+\usepackage[margin=2cm]{geometry}
+\usepackage{makeidx}
+
+
 % Title Page
 \title{\textbf{Introdução à simulação de circuitos com o \textit{LTspice}}}
 \author{Renan Birck Pinheiro}
@@ -12,6 +17,8 @@
 \begin{document}
 
 \input{./capa.tex}
+
+\tableofcontents
 
 \chapter{Introdução}
 As primeiras versões do SPICE (\textit{Simulation Program with Integrated Circuit Emphasis}\footnote{Programa de Simulação com Ênfase em Circuitos Integrados}) foram desenvolvidas nos anos 70, visando (como o próprio nome já diz) a simulação de circuitos integrados (atividade na qual é inviável ou impossível a prototipagem). Inicialmente, devido aos limitados recursos computacionais da época, as simulações eram restritas a circuitos simples, e os resultados - após a simulação ser executada em computadores de grande porte - eram visualizados de forma textual.
@@ -24,7 +31,9 @@ No presente trabalho serão abordados os conceitos básicos do uso do software. 
 \chapter{A interface do \textit{LTspice}}
 O LTspice pode ser baixado a partir do site da \textit{Linear Technology}: \url{http://www.linear.com/ltspice}, selecionando-se a opção \textit{Download LTspice IV} e, após, a opção \textit{No, thanks, just download the software}. 
 
-Após instalado, o \textit{LTspice} pode ser aberto a partir do Menu Iniciar ou do ícone criado na área de trabalho. 
+Após instalado, o \textit{LTspice} pode ser aberto a partir do Menu Iniciar ou do ícone criado na área de trabalho. Então, teremos a interface dele:
+
+
 
 \chapter{Links úteis e contato}
 \begin{itemize}
