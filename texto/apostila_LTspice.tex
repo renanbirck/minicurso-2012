@@ -9,7 +9,6 @@
 \usepackage[margin=2cm]{geometry}
 \usepackage{makeidx}
 
-
 % Title Page
 \title{\textbf{Introdução à simulação de circuitos com o \textit{LTspice}}}
 \author{Renan Birck Pinheiro}
@@ -25,15 +24,18 @@ As primeiras versões do SPICE (\textit{Simulation Program with Integrated Circu
 
 Na década de 80, o SPICE foi portado do FORTRAN para o C e passou a ser executado no ambiente UNIX (versão chamada de SPICE3), permitindo o uso em computadores de pequeno/médio porte e \textit{workstations} com interfaces gráficas simples. 
 
-Já nos anos 90, com o aumento exponencial da capacidade dos computadores pessoais, desenvolveram-se versões deste - com interfaces gráficas sofisticadas - para os sistemas operacionais mais utilizados, assim possibilitando o uso da ferramenta sem necessidade de contato com a linha de comando. Apesar destas mudanças, o mecanismo de funcionamento de um simulador  efetivamente permanece o mesmo: empregam-se as equações e análises da teoria dos circuitos, junto com métodos numéricos modelos equivalentes para semicondutores e outros dispositivos, para a análise numérica do circuito. Não iremos entrar nos detalhes sobre esses algoritmos: os interessados podem ex. verificar \cite{nagel} e \cite{chung}.
+Já nos anos 90, com o aumento exponencial da capacidade dos computadores pessoais, desenvolveram-se versões deste - com interfaces gráficas sofisticadas - para os sistemas operacionais mais utilizados, assim possibilitando o uso da ferramenta sem necessidade de contato com a linha de comando. Apesar destas mudanças, o mecanismo de funcionamento de um simulador  efetivamente permanece o mesmo: empregam-se as equações e análises da teoria dos circuitos, junto com métodos numéricos e modelos equivalentes para semicondutores e outros dispositivos, para a análise numérica do circuito. Não iremos entrar nos detalhes sobre esses algoritmos: os interessados podem ex. verificar \cite{nagel} e \cite{chung}.
 
-No presente trabalho serão abordados os conceitos básicos do uso do software. Assuntos mais avançados, que infelizmente não podem ser abordados por questão de tempo, estão disponíveis no sistema de ajuda (aperte F1 dentro do \textit{LTspice}).
+No presente trabalho serão abordados os conceitos básicos do uso do software, suficientes para os usos mais comuns a serem encontrados durante a graduação. Assuntos mais avançados, que infelizmente não podem ser abordados por questão de tempo, estão disponíveis no sistema de ajuda (aperte F1 dentro do \textit{LTspice}).
 \chapter{A interface do \textit{LTspice}}
 O LTspice pode ser baixado a partir do site da \textit{Linear Technology}: \url{http://www.linear.com/ltspice}, selecionando-se a opção \textit{Download LTspice IV} e, após, a opção \textit{No, thanks, just download the software}. 
 
 Após instalado, o \textit{LTspice} pode ser aberto a partir do Menu Iniciar ou do ícone criado na área de trabalho. Então, teremos a interface dele:
 
-
+\begin{figure}[htb]
+\center \includegraphics[width=400px]{imagens/ltspice_janela_principal}
+\caption{A tela principal do LTspice. Clique no botão \textit{New Schematic} para criar um novo desenho, ou no botão \textit{Open} para abrir um esquemático existente.}
+\end{figure}
 
 \chapter{Links úteis e contato}
 \begin{itemize}
