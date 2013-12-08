@@ -8,4 +8,4 @@ bibtex $FILENAME.aux
 pdflatex $FILENAME.tex
 pdflatex $FILENAME.tex
 
-$PDF_READER $FILENAME.pdf
+#$PDF_READER $FILENAME.pdf
